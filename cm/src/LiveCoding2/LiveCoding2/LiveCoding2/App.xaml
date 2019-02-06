@@ -4,6 +4,11 @@
                       xmlns:mvvm="clr-namespace:Storm.Mvvm;assembly=Storm.Mvvm.Forms"
                       x:Class="LiveCoding2.App">
     <Application.Resources>
+        <ResourceDictionary>
+            <Color x:Key="TitleBackgroundColor">#F2500A</Color>
+            <Color x:Key="PageBackgroundColor">#EEEEEE</Color>
 
+            <x:String x:Key="CreationDateFormat">{0:dd/MM/yyyy HH:mm}</x:String>
+        </ResourceDictionary>
     </Application.Resources>
 </Application>

@@ -6,7 +6,7 @@
                       xmlns:mvvm="clr-namespace:Storm.Mvvm.Forms;assembly=Storm.Mvvm.Forms"
                       xmlns:vm="clr-namespace:LiveCoding2.ViewModels"
                       x:Class="LiveCoding2.HomePage"
-                      BackgroundColor="#EEEEEE"
+                      BackgroundColor="{StaticResource PageBackgroundColor}"
                       x:DataType="vm:HomeViewModel"
                       >
 
@@ -14,7 +14,7 @@
 
         <StackLayout HorizontalOptions="FillAndExpand"
                VerticalOptions="Start"
-               BackgroundColor="#F2500A"               
+               BackgroundColor="{StaticResource TitleBackgroundColor}"               
                  >
             <Label Text="{Binding Title}" 
                    TextColor="White"
@@ -49,7 +49,7 @@
                                            LineBreakMode="WordWrap" 
                                            FontSize="10"
                                            />
-                                    <Label Text="{Binding CreationDate, StringFormat='{0:dd/MM/yyyy HH:mm}'}" 
+                                    <Label Text="{Binding CreationDate, StringFormat={StaticResource CreationDateFormat}}" 
                                            FontSize="8"
                                            TextColor="Gray"
                                            />
