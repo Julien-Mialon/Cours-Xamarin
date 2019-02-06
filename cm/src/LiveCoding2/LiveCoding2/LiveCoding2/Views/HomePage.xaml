@@ -1,0 +1,76 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<mvvm:BaseContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+                      xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+                      xmlns:local="clr-namespace:LiveCoding2"
+                      xmlns:models="clr-namespace:LiveCoding2.Models"
+                      xmlns:mvvm="clr-namespace:Storm.Mvvm.Forms;assembly=Storm.Mvvm.Forms"
+                      xmlns:vm="clr-namespace:LiveCoding2.ViewModels"
+                      x:Class="LiveCoding2.HomePage"
+                      BackgroundColor="#EEEEEE"
+                      x:DataType="vm:HomeViewModel"
+                      >
+
+    <StackLayout Orientation="Vertical">
+
+        <StackLayout HorizontalOptions="FillAndExpand"
+               VerticalOptions="Start"
+               BackgroundColor="#F2500A"               
+                 >
+            <Label Text="{Binding Title}" 
+                   TextColor="White"
+                   FontSize="16"
+                   HorizontalOptions="Center"
+                   Margin="4,6,4,6"
+                   />
+        </StackLayout>
+
+        <ListView x:Name="TodoList" HasUnevenRows="True" SelectionMode="None" ItemsSource="{Binding Todos}">
+            <ListView.ItemTemplate>
+                <DataTemplate x:DataType="models:Todo">
+                    <ViewCell>
+                        <Frame CornerRadius="4"
+                               HasShadow="True"
+                               Margin="4,4,4,4"
+                               Padding="8,4,8,4"
+                               HorizontalOptions="FillAndExpand"
+                               VerticalOptions="Start"
+                               >
+                            <StackLayout HorizontalOptions="FillAndExpand"
+                                         VerticalOptions="Start"
+                                         Orientation="Horizontal">
+
+                                <StackLayout Orientation="Vertical"
+                                             Grid.Column="0"
+                                             HorizontalOptions="FillAndExpand"
+                                             VerticalOptions="Center"
+                                             >
+                                    <Label Text="{Binding Text}" 
+                                           TextColor="Black" 
+                                           LineBreakMode="WordWrap" 
+                                           FontSize="10"
+                                           />
+                                    <Label Text="{Binding CreationDate, StringFormat='{0:dd/MM/yyyy HH:mm}'}" 
+                                           FontSize="8"
+                                           TextColor="Gray"
+                                           />
+                                </StackLayout>
+
+                                <Button BackgroundColor="DarkRed"
+                                        Grid.Column="1"
+                                        Margin="8,0,0,0"
+                                        HorizontalOptions="End"
+                                        VerticalOptions="Center"
+                                        Image="delete.png"
+                                        HeightRequest="24"
+                                        WidthRequest="24"
+                                        Command="{Binding DeleteCommand}"
+                                        />
+                            </StackLayout>
+                        </Frame>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+
+    </StackLayout>
+</mvvm:BaseContentPage>
