@@ -284,3 +284,5 @@ $RECYCLE.BIN
 #MFractor
 *.droidres/
 *.mfractor/
+
+NuGet.Config
