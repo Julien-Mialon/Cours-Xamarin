@@ -27,5 +27,5 @@ function create_certificate_dryrun {
         -d $1 
 }
 
-#create_certificate td-api.julienmialon.com
+create_certificate td-api.julienmialon.com
 #create_certificate_dryrun td-api.julienmialon.com

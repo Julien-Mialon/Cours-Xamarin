@@ -47,7 +47,6 @@ services:
       - ./letsencrypt/etc/letsencrypt:/etc/letsencrypt
     depends_on:
       - api
-      - static
     ports:
       - 80:80
       - 443:443
