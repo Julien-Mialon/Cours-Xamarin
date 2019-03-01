@@ -11,7 +11,8 @@ namespace TD.SqlMigrations
 
 		public override List<IMigrationOperation> Operations { get; } = new List<IMigrationOperation>
 		{
-            new Migration001(),
+            //new Migration001(),
+            new Migration002(),
 		};
 	}
 }

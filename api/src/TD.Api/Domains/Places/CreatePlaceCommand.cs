@@ -7,13 +7,14 @@ using Common.Core.Exceptions;
 using Common.Core.Extensions;
 using Common.Core.Services;
 using Microsoft.Extensions.DependencyInjection;
+using TD.Api.Bases;
 using TD.Api.Dtos;
 using TD.Api.Models;
 using TD.Api.Services;
 
 namespace TD.Api.Domains.Places
 {
-	public class CreatePlaceCommand : BaseCommand<CreatePlaceRequest, Unit>
+	public class CreatePlaceCommand : BaseAuthenticatedTdCommand<CreatePlaceRequest, Unit>
 	{
 		public CreatePlaceCommand(IServiceProvider services) : base(services)
 		{

@@ -13,7 +13,8 @@ namespace TD.Api.Models
 		[References(typeof(Place))]
 		public int PlaceId { get; set; }
 		
-		public string AuthorName { get; set; }
+		[References(typeof(User))]
+		public int AuthorId { get; set; }
 		
 		public string Text { get; set; }
 	}

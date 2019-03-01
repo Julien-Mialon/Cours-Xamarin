@@ -9,7 +9,7 @@ namespace TD.Api.Services
 {
 	public interface ICommentService
 	{
-		Task<List<Comment>> ListComments(int placeId);
+		Task<List<(Comment comment, User user)>> ListComments(int placeId);
 		Task Create(Comment comment);
 	}
 	
@@ -22,15 +22,18 @@ namespace TD.Api.Services
 			_databaseService = databaseService;
 		}
 		
-		public async Task<List<Comment>> ListComments(int placeId)
+		public async Task<List<(Comment comment, User user)>> ListComments(int placeId)
 		{
 			var connection = await _databaseService.Connection;
 
-			return await connection.From<Comment>()
+			var result = await connection.SelectMultiAsync<Comment, User>(connection.From<Comment>()
+				.LeftJoin<Comment, User>(((comment, user) => comment.AuthorId == user.Id))
 				.NotDeleted()
 				.Where(x => x.PlaceId == placeId)
 				.OrderByDescending(x => x.EntityCreatedDate)
-				.AsSelectAsync(connection);
+			);
+
+			return result.ConvertAll(x => (x.Item1, x.Item2));
 		}
 
 		public async Task Create(Comment comment)

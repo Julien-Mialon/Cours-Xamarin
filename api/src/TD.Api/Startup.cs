@@ -5,6 +5,7 @@ using Common.Core.CQRS;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using TD.Api.Models;
 using TD.Api.Services;
 
 namespace TD.Api
@@ -30,7 +31,10 @@ namespace TD.Api
                 .AddScoped<IPlaceService, PlaceService>()
                 .AddScoped<IImageService, ImageService>()
                 .AddScoped<ICommentService, CommentService>()
+                .AddScoped<IUserService, UserService>()
                 ;
+
+            services.AddSingleton<ICommandAuthenticator<User>, AuthenticatorService>();
         }
     }
 }

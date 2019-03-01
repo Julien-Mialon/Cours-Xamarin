@@ -31,7 +31,7 @@ namespace TD.Api.Domains.Places
 				throw new DomainHttpCodeException(HttpStatusCode.NotFound, "This id does not exists");
 			}
 
-			List<Comment> comments = await Services.GetService<ICommentService>().ListComments(place.Id);
+			List<(Comment comment, User author)> comments = await Services.GetService<ICommentService>().ListComments(place.Id);
 			
 			return new PlaceItem
 			{
@@ -43,9 +43,9 @@ namespace TD.Api.Domains.Places
 				Title = place.Title,
 				Comments = comments.ConvertAll(x => new CommentItem
 				{
-					Date = x.EntityCreatedDate,
-					Text = x.Text,
-					AuthorName = x.AuthorName
+					Date = x.comment.EntityCreatedDate,
+					Text = x.comment.Text,
+					Author = x.author.ToUserItem(),
 				})
 			};
 		}

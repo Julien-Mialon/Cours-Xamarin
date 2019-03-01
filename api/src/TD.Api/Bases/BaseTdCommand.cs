@@ -11,4 +11,11 @@ namespace TD.Api.Bases
 		{
 		}
 	}
+
+	public abstract class BaseAuthenticatedTdCommand<TParameter, TResult> : BaseAuthenticatedCommand<TParameter, TResult, User>
+	{
+		protected BaseAuthenticatedTdCommand(IServiceProvider provider) : base(provider, Scopes.Any)
+		{
+		}
+	}
 }

@@ -19,7 +19,7 @@ namespace TD.Api.Domains.Comments
 		public CreateCommentRequest Request { get; set; }
 	}
 
-	public class CreateCommentCommand : BaseTdCommand<CreateCommentCommandParameter, Unit>
+	public class CreateCommentCommand : BaseAuthenticatedTdCommand<CreateCommentCommandParameter, Unit>
 	{
 		public CreateCommentCommand(IServiceProvider provider) : base(provider)
 		{
@@ -30,8 +30,7 @@ namespace TD.Api.Domains.Comments
 			return base.ValidateParameter(parameter) &&
 			       parameter.PlaceId > 0 &&
 			       parameter.Request.NotNull() &&
-			       parameter.Request.Text.NotNullOrEmpty() &&
-			       parameter.Request.AuthorName.NotNullOrEmpty();
+			       parameter.Request.Text.NotNullOrEmpty();
 		}
 
 		protected override async Task<Unit> Action(CreateCommentCommandParameter parameter)
@@ -50,8 +49,8 @@ namespace TD.Api.Domains.Comments
 			await commentService.Create(new Comment
 			{
 				Text = parameter.Request.Text,
-				AuthorName = parameter.Request.AuthorName,
-				PlaceId = place.Id
+				PlaceId = place.Id,
+				AuthorId = User.Id
 			});
 
 			return Unit.Default;

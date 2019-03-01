@@ -11,4 +11,11 @@ namespace TD.Api.Bases
 		{
 		}
 	}
+
+	public abstract class BaseAuthenticatedTdQuery<TParameter, TResult> : BaseAuthenticatedQuery<TParameter, TResult, User>
+	{
+		protected BaseAuthenticatedTdQuery(IServiceProvider provider) : base(provider, Scopes.Any)
+		{
+		}
+	}
 }
