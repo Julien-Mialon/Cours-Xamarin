@@ -1,0 +1,29 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:WinterIsComing"
+             x:Class="WinterIsComing.V1.SeasonPage">
+
+    <StackLayout>
+        <Label Text="Winter is coming..."
+               HorizontalOptions="Center" 
+               Margin="0,60,0,20"
+               />
+        
+        <Label Text="{Binding SeasonName}" 
+               HorizontalOptions="Center"
+               />
+        <Image Source="{Binding SeasonImage}"
+               HeightRequest="100"
+               Aspect="AspectFit"
+               />
+        
+        <DatePicker MinimumDate="2020-01-01"
+                    MaximumDate="2020-12-31"
+                    Date="{Binding SelectedDate}"
+                    Margin="20,0"
+                    />
+    </StackLayout>
+
+</ContentPage>

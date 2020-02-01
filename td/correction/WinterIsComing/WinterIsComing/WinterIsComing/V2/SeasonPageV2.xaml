@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<mvvm:BaseContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:WinterIsComing.V2;assembly=WinterIsComing"
+             xmlns:mvvm="clr-namespace:Storm.Mvvm.Forms;assembly=Storm.Mvvm.Forms"
+             x:Class="WinterIsComing.V2.SeasonPageV2">
+    <ContentPage.BindingContext>
+        <local:SeasonViewModelV2 />
+    </ContentPage.BindingContext>
+    <ContentPage.Resources>
+        <local:SeasonToNameConverter x:Key="SeasonToNameConverter" />
+        <local:SeasonToImageConverter x:Key="SeasonToImageConverter" />
+    </ContentPage.Resources>
+    <StackLayout>
+        <Label Text="Winter is coming..."
+               HorizontalOptions="Center" 
+               Margin="0,60,0,20"
+        />
+        
+        <Label Text="{Binding Season, Converter={StaticResource SeasonToNameConverter}}" 
+               HorizontalOptions="Center"
+        />
+        <Image Source="{Binding Season, Converter={StaticResource SeasonToImageConverter}}"
+               HeightRequest="100"
+               Aspect="AspectFit"
+        />
+        
+        <DatePicker MinimumDate="2020-01-01"
+                    MaximumDate="2020-12-31"
+                    Date="{Binding SelectedDate}"
+                    Margin="20,0"
+        />
+    </StackLayout>
+    
+</mvvm:BaseContentPage>
