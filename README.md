@@ -2,6 +2,7 @@
 Cours Xamarin pour l'Université d'Orléans en février 2020
 
 Correction des TD: https://github.com/VJubert/XamarinTD
+QCM https://docs.google.com/forms/d/e/1FAIpQLSeJnDumlcTuNvRkKIow8eAPY2ULiy9DB2qRhhXuRNIoaB8LdA/viewform?usp=sf_link
 
 Plugin à utiliser : 
 - Xamarin.Essentials => plein d'essentiel pour vous simplifier l'utilisation des API natives
