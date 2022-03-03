@@ -1,0 +1,901 @@
+{
+	"info": {
+		"_postman_id": "030ac102-6321-4391-9576-be873e05e58d",
+		"name": "Timetracker",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Auth",
+			"item": [
+				{
+					"name": "Login",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"if(responseCode.code === 200)\r",
+									"{\r",
+									"    var r = JSON.parse(responseBody);\r",
+									"    if(r.is_success === true)\r",
+									"    {\r",
+									"        pm.environment.set(\"access_token\", r.data.access_token);\r",
+									"        pm.environment.set(\"refresh_token\", r.data.refresh_token);\r",
+									"        pm.environment.set(\"token_type\", r.data.token_type);\r",
+									"    }\r",
+									"}"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"client_id\": \"{{CLIENT_ID}}\",\r\n    \"client_secret\": \"{{CLIENT_SECRET}}\",\r\n    \"login\": \"{{login}}\",\r\n    \"password\": \"{{password}}\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{API_ROOT}}/login",
+							"host": [
+								"{{API_ROOT}}"
+							],
+							"path": [
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Refresh",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"if(responseCode.code === 200)\r",
+									"{\r",
+									"    var r = JSON.parse(responseBody);\r",
+									"    if(r.is_success === true)\r",
+									"    {\r",
+									"        pm.environment.set(\"access_token\", r.data.access_token);\r",
+									"        pm.environment.set(\"refresh_token\", r.data.refresh_token);\r",
+									"        pm.environment.set(\"token_type\", r.data.token_type);\r",
+									"    }\r",
+									"}"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"client_id\": \"{{CLIENT_ID}}\",\r\n    \"client_secret\": \"{{CLIENT_SECRET}}\",\r\n    \"refresh_token\": \"{{refresh_token}}\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{API_ROOT}}/refresh",
+							"host": [
+								"{{API_ROOT}}"
+							],
+							"path": [
+								"refresh"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Set password",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"if(responseCode.code === 200)\r",
+									"{\r",
+									"    var r = JSON.parse(responseBody);\r",
+									"    if(r.is_success === true)\r",
+									"    {\r",
+									"        \r",
+									"    }\r",
+									"}"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"old_password\": \"{{password}}\",\r\n    \"new_password\": \"cours2022\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{API_ROOT}}/password",
+							"host": [
+								"{{API_ROOT}}"
+							],
+							"path": [
+								"password"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Set password 2",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"if(responseCode.code === 200)\r",
+									"{\r",
+									"    var r = JSON.parse(responseBody);\r",
+									"    if(r.is_success === true)\r",
+									"    {\r",
+									"        \r",
+									"    }\r",
+									"}"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"old_password\": \"cours2022\",\r\n    \"new_password\": \"{{password}}\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{API_ROOT}}/password",
+							"host": [
+								"{{API_ROOT}}"
+							],
+							"path": [
+								"password"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Account",
+			"item": [
+				{
+					"name": "User Profile",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{API_ROOT}}/me",
+							"host": [
+								"{{API_ROOT}}"
+							],
+							"path": [
+								"me"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update User",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"mialon.julien@gmail.com\",\r\n    \"first_name\": \"Julien\",\r\n    \"last_name\": \"Mialon\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{API_ROOT}}/me",
+							"host": [
+								"{{API_ROOT}}"
+							],
+							"path": [
+								"me"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Register",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"if(responseCode.code === 200)\r",
+									"{\r",
+									"    var r = JSON.parse(responseBody);\r",
+									"    if(r.is_success === true)\r",
+									"    {\r",
+									"        pm.environment.set(\"access_token\", r.data.access_token);\r",
+									"        pm.environment.set(\"refresh_token\", r.data.refresh_token);\r",
+									"        pm.environment.set(\"token_type\", r.data.token_type);\r",
+									"    }\r",
+									"}"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"client_id\": \"{{CLIENT_ID}}\",\r\n    \"client_secret\": \"{{CLIENT_SECRET}}\",\r\n    \"email\": \"{{login}}\",\r\n    \"password\": \"{{password}}\",\r\n    \"first_name\": \"J\",\r\n    \"last_name\": \"M\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{API_ROOT}}/register",
+							"host": [
+								"{{API_ROOT}}"
+							],
+							"path": [
+								"register"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Projects",
+			"item": [
+				{
+					"name": "Projects - List",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"if(responseCode.code === 200)\r",
+									"{\r",
+									"    var r = JSON.parse(responseBody);\r",
+									"    if(r.is_success === true)\r",
+									"    {\r",
+									"        if(r.data.length > 0)\r",
+									"        {\r",
+									"            pm.environment.set(\"project_id\", r.data[0].id);\r",
+									"        }\r",
+									"    }\r",
+									"}"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{API_ROOT}}/projects",
+							"host": [
+								"{{API_ROOT}}"
+							],
+							"path": [
+								"projects"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Projects - Create",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"if(responseCode.code === 200)\r",
+									"{\r",
+									"    var r = JSON.parse(responseBody);\r",
+									"    if(r.is_success === true)\r",
+									"    {\r",
+									"        pm.environment.set(\"project_id\", r.data.id);\r",
+									"    }\r",
+									"}"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Projet 1\",\r\n    \"description\": \"Projet top secret qui ne finira surement jamais\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{API_ROOT}}/projects",
+							"host": [
+								"{{API_ROOT}}"
+							],
+							"path": [
+								"projects"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Projects - Update",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"if(responseCode.code === 200)\r",
+									"{\r",
+									"    var r = JSON.parse(responseBody);\r",
+									"    if(r.is_success === true)\r",
+									"    {\r",
+									"        \r",
+									"    }\r",
+									"}"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Projet X\",\r\n    \"description\": \"Projet top secret qui ne finira surement jamais (mais si !)\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{API_ROOT}}/projects/{{project_id}}",
+							"host": [
+								"{{API_ROOT}}"
+							],
+							"path": [
+								"projects",
+								"{{project_id}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Projects - Delete",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"if(responseCode.code === 200)\r",
+									"{\r",
+									"    var r = JSON.parse(responseBody);\r",
+									"    if(r.is_success === true)\r",
+									"    {\r",
+									"        \r",
+									"    }\r",
+									"}"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{API_ROOT}}/projects/{{project_id}}",
+							"host": [
+								"{{API_ROOT}}"
+							],
+							"path": [
+								"projects",
+								"{{project_id}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Tasks - List",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"if(responseCode.code === 200)\r",
+									"{\r",
+									"    var r = JSON.parse(responseBody);\r",
+									"    if(r.is_success === true)\r",
+									"    {\r",
+									"        if(r.data.length > 0)\r",
+									"        {\r",
+									"            pm.environment.set(\"task_id\", r.data[0].id);\r",
+									"        }\r",
+									"    }\r",
+									"}"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{API_ROOT}}/projects/{{project_id}}/tasks",
+							"host": [
+								"{{API_ROOT}}"
+							],
+							"path": [
+								"projects",
+								"{{project_id}}",
+								"tasks"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Tasks - Create",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"if(responseCode.code === 200)\r",
+									"{\r",
+									"    var r = JSON.parse(responseBody);\r",
+									"    if(r.is_success === true)\r",
+									"    {\r",
+									"        pm.environment.set(\"task_id\", r.data.id);\r",
+									"    }\r",
+									"}"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Task 2\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{API_ROOT}}/projects/{{project_id}}/tasks",
+							"host": [
+								"{{API_ROOT}}"
+							],
+							"path": [
+								"projects",
+								"{{project_id}}",
+								"tasks"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Tasks - Update",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"if(responseCode.code === 200)\r",
+									"{\r",
+									"    var r = JSON.parse(responseBody);\r",
+									"    if(r.is_success === true)\r",
+									"    {\r",
+									"        pm.environment.set(\"task_id\", r.data.id);\r",
+									"    }\r",
+									"}"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Task X\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{API_ROOT}}/projects/{{project_id}}/tasks/{{task_id}}",
+							"host": [
+								"{{API_ROOT}}"
+							],
+							"path": [
+								"projects",
+								"{{project_id}}",
+								"tasks",
+								"{{task_id}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Tasks - Delete",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"if(responseCode.code === 200)\r",
+									"{\r",
+									"    var r = JSON.parse(responseBody);\r",
+									"    if(r.is_success === true)\r",
+									"    {\r",
+									"        \r",
+									"    }\r",
+									"}"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{API_ROOT}}/projects/{{project_id}}/tasks/{{task_id}}",
+							"host": [
+								"{{API_ROOT}}"
+							],
+							"path": [
+								"projects",
+								"{{project_id}}",
+								"tasks",
+								"{{task_id}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Times - Add",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"if(responseCode.code === 200)\r",
+									"{\r",
+									"    var r = JSON.parse(responseBody);\r",
+									"    if(r.is_success === true)\r",
+									"    {\r",
+									"        pm.environment.set(\"task_id\", r.data.id);\r",
+									"    }\r",
+									"}"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"start_time\": \"2022-03-01T10:00:00.000Z\",\r\n    \"end_time\": \"2022-03-01T10:15:00.000Z\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{API_ROOT}}/projects/{{project_id}}/tasks/{{task_id}}/times",
+							"host": [
+								"{{API_ROOT}}"
+							],
+							"path": [
+								"projects",
+								"{{project_id}}",
+								"tasks",
+								"{{task_id}}",
+								"times"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Times - Update",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"if(responseCode.code === 200)\r",
+									"{\r",
+									"    var r = JSON.parse(responseBody);\r",
+									"    if(r.is_success === true)\r",
+									"    {\r",
+									"        pm.environment.set(\"task_id\", r.data.id);\r",
+									"    }\r",
+									"}"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"start_time\": \"2022-03-01T10:00:00.000Z\",\r\n    \"end_time\": \"2022-03-01T10:15:00.000Z\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{API_ROOT}}/projects/{{project_id}}/tasks/{{task_id}}/times/{{time_id}}",
+							"host": [
+								"{{API_ROOT}}"
+							],
+							"path": [
+								"projects",
+								"{{project_id}}",
+								"tasks",
+								"{{task_id}}",
+								"times",
+								"{{time_id}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Times - Delete",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"if(responseCode.code === 200)\r",
+									"{\r",
+									"    var r = JSON.parse(responseBody);\r",
+									"    if(r.is_success === true)\r",
+									"    {\r",
+									"        \r",
+									"    }\r",
+									"}"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{API_ROOT}}/projects/{{project_id}}/tasks/{{task_id}}/times/{{time_id}}",
+							"host": [
+								"{{API_ROOT}}"
+							],
+							"path": [
+								"projects",
+								"{{project_id}}",
+								"tasks",
+								"{{task_id}}",
+								"times",
+								"{{time_id}}"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					"",
+					"var authorization = pm.environment.get(\"access_token\");",
+					"if(authorization !== '' && authorization !== undefined && authorization !== null)",
+					"{",
+					"    pm.request.headers.add({",
+					"        key: 'Authorization',",
+					"        value: 'Bearer ' + authorization",
+					"    });",
+					"}",
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	]
+}
