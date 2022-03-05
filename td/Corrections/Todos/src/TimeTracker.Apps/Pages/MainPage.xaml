@@ -1,0 +1,57 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<forms:BaseContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+                 xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+                 xmlns:forms="clr-namespace:Storm.Mvvm.Forms;assembly=Storm.Mvvm.Forms"
+                 xmlns:viewModels="clr-namespace:TimeTracker.Apps.ViewModels;assembly=TimeTracker.Apps"
+                 x:DataType="viewModels:MainViewModel"
+                 x:Class="TimeTracker.Apps.Pages.MainPage">
+
+    <ContentPage.Resources>
+        <DataTemplate x:DataType="viewModels:Todo" x:Key="TodoTemplate">
+            <ViewCell>
+                <StackLayout Orientation="Vertical" HorizontalOptions="StartAndExpand">
+                    <Label Text="{Binding Text}"
+                           FontSize="32"
+                           LineBreakMode="WordWrap"
+                    />
+                    <Grid ColumnDefinitions="*,*" >
+                        <Button Grid.Column="0"
+                                Text="Editer"
+                                BackgroundColor="LightBlue"
+                                CornerRadius="32"
+                                HeightRequest="64"
+                                Command="{Binding EditCommand}"
+                                CommandParameter="{Binding .}"
+                        />
+                        <Button Grid.Column="1"
+                                Text="Supprimer"
+                                TextColor="White"
+                                BackgroundColor="DarkRed"
+                                CornerRadius="32"
+                                HeightRequest="64"
+                                Command="{Binding DeleteCommand}"
+                                CommandParameter="{Binding .}"
+                        />
+                    </Grid>
+                </StackLayout>
+            </ViewCell>
+        </DataTemplate>
+    </ContentPage.Resources>
+    
+    <Grid RowDefinitions="*, Auto" Margin="12,0,12,48">
+        <ListView ItemsSource="{Binding Todos}"
+                  Grid.Row="0"
+                  HasUnevenRows="True"
+                  ItemTemplate="{StaticResource TodoTemplate}"
+                  />
+        <Button Text="Ajouter"
+                BackgroundColor="LightBlue"
+                CornerRadius="32"
+                HeightRequest="64"
+                Grid.Row="1"
+                HorizontalOptions="FillAndExpand"
+                Command="{Binding AddCommand}"
+                />
+    </Grid>
+
+</forms:BaseContentPage>

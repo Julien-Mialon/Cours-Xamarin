@@ -1,0 +1,40 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30114.105
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TimeTracker.Dtos", "src\TimeTracker.Dtos\TimeTracker.Dtos.csproj", "{029ED3B2-0C89-4505-A40A-C7B76CD3FACC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TimeTracker.Apps", "src\TimeTracker.Apps\TimeTracker.Apps.csproj", "{C7434215-108E-4159-918A-BC3DEA4E7C8D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TimeTracker.Apps.Droid", "src\TimeTracker.Apps.Droid\TimeTracker.Apps.Droid.csproj", "{1CE44A98-0E75-42E4-9D24-06288509990C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TimeTracker.Apps.iOS", "src\TimeTracker.Apps.iOS\TimeTracker.Apps.iOS.csproj", "{B5EC25B7-5CDF-4ECE-ABA7-C81E862F6A73}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{029ED3B2-0C89-4505-A40A-C7B76CD3FACC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{029ED3B2-0C89-4505-A40A-C7B76CD3FACC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{029ED3B2-0C89-4505-A40A-C7B76CD3FACC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{029ED3B2-0C89-4505-A40A-C7B76CD3FACC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C7434215-108E-4159-918A-BC3DEA4E7C8D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C7434215-108E-4159-918A-BC3DEA4E7C8D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C7434215-108E-4159-918A-BC3DEA4E7C8D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C7434215-108E-4159-918A-BC3DEA4E7C8D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1CE44A98-0E75-42E4-9D24-06288509990C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1CE44A98-0E75-42E4-9D24-06288509990C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1CE44A98-0E75-42E4-9D24-06288509990C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1CE44A98-0E75-42E4-9D24-06288509990C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B5EC25B7-5CDF-4ECE-ABA7-C81E862F6A73}.Debug|Any CPU.ActiveCfg = Debug|iPhoneSimulator
+		{B5EC25B7-5CDF-4ECE-ABA7-C81E862F6A73}.Debug|Any CPU.Build.0 = Debug|iPhoneSimulator
+		{B5EC25B7-5CDF-4ECE-ABA7-C81E862F6A73}.Release|Any CPU.ActiveCfg = Release|iPhoneSimulator
+		{B5EC25B7-5CDF-4ECE-ABA7-C81E862F6A73}.Release|Any CPU.Build.0 = Release|iPhoneSimulator
+	EndGlobalSection
+EndGlobal
