@@ -6,3 +6,6 @@ Plugin à utiliser :
 - Newtonsoft.Json => JSON
 - MonkeyCache.SQLite => cache 
   - cocher pre-release ou "inclure les versions préliminaire"
+
+
+URL QCM : https://forms.gle/Ym9Ke1yKyhPs7Zhr5
